@@ -18,12 +18,34 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-class Repo extends React.Component {
-  /*constructor(props){
-    super(props);
+function GetSortOrderLow(prop) {  
+    return function(a, b) {  
+        if (a[prop] > b[prop]) {  
+            return 1;  
+        } else if (a[prop] < b[prop]) {  
+            return -1;  
+        }  
+        return 0;  
+    }  
+}  
 
-    this.inputValue= this.inputValue.bind(this);
-  }*/
+function GetSortOrderHigh(prop) {  
+    return function(a, b) {  
+        if (a[prop] < b[prop]) {  
+            return 1;  
+        } else if (a[prop] > b[prop]) {  
+            return -1;  
+        }  
+        return 0;  
+    }  
+}  
+
+class Repo extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={key: '',}
+    this.sortById= this.sortById.bind(this);
+  }
 
   componentDidMount(){
   this.props.fetchRepo(this.props.inputValue);
@@ -39,10 +61,28 @@ componentWillReceiveProps(nextProps) {
 /*inputValue(e){
   this.props.fetchRepo(e.target.value);
 }*/
+sortById(keyValue){
+  this.setState({key: keyValue});
+  //this.props.repo.sort(GetSortOrderLow(key));
+
+}
 
   render() {
-   
-
+    if(this.state.key === 'id'){
+    this.props.repo.sort(GetSortOrderLow("id"));
+   }
+   if(this.state.key === 'name'){
+    this.props.repo.sort(GetSortOrderHigh("name"));
+   }
+    if(this.state.key === 'owner'){
+    this.props.repo.sort(GetSortOrderLow("owner.login"));
+   }
+ if(this.state.key === 'stars'){
+    this.props.repo.sort(GetSortOrderHigh("stargazers_count"));
+   }
+    if(this.state.key === 'created'){
+    this.props.repo.sort(GetSortOrderLow("created_at"));
+   }
     const repo = this.props.repo.map((repos,i) => {
       if(repos !== [] || repos !== null){
      return(
@@ -71,7 +111,7 @@ componentWillReceiveProps(nextProps) {
         </div>
         )
       }
-
+//movie_data.sort(GetSortOrderLow("vote_average"));
      /* if(this.props.repoError){
         return(
           <h1>Repo Error...</h1>
@@ -89,11 +129,11 @@ componentWillReceiveProps(nextProps) {
          <table border="1" cellPadding="0" cellSpacing="0">
          <tbody>
           <tr>
-            <td>ID</td>
-            <td>Repo Title</td>
-            <td>Owner</td>
-            <td>Stars</td>
-            <td>Created</td>
+            <td onClick={this.sortById.bind(this,'id')}>ID</td>
+            <td onClick={this.sortById.bind(this,'name')}>Repo Title</td>
+            <td onClick={this.sortById.bind(this,'owner')}>Owner</td>
+            <td onClick={this.sortById.bind(this,'stars')}>Stars</td>
+            <td onClick={this.sortById.bind(this,'created')}>Created</td>
           </tr>
             {repo}
             </tbody>
