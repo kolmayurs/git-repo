@@ -38,7 +38,8 @@ body{
 .input-box{
 	position: relative;
 	top:100px;
-	width: 400px;
+	width:100%;
+	max-width: 400px;
 	padding: 20px;
 	background-color: #ffffff;
 	display: block;
@@ -50,8 +51,10 @@ body{
 }
 
 .input-box input{
-	width: 380px;
+	width: 100%;
+	max-width: 380px;
 	padding: 10px;
+	font-size:14px;
 	border: 1px solid #ededed;
 	/*outline: 1px solid #ededed;*/
 	background-color: #ffffff;
@@ -60,7 +63,8 @@ body{
 .user-box{
 	position: relative;
 	top:120px;
-	width: 400px;
+	width: 100%;
+	max-width: 400px;
 	padding: 20px;
 	background-color: #ffffff;
 	display: block;
@@ -106,11 +110,21 @@ body{
 	margin: 0 auto;
 	border: 1px solid #ededed;
 	outline: 1px solid #ededed;
+	overflow-x:auto;	
+}
+
+.no_repos{
+	width: 100%;
+	display: block;
+	text-align: center;	
 }
 
 table{
 	text-align: center;
-  width: 100%;
+  border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;	
   max-width:800px; 
 
 }

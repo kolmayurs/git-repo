@@ -83,8 +83,10 @@ sortById(keyValue){
     if(this.state.key === 'created'){
     this.props.repo.sort(GetSortOrderLow("created_at"));
    }
+   let countRepo = 0;
     const repo = this.props.repo.map((repos,i) => {
       if(repos !== [] || repos !== null){
+        countRepo++;
      return(
           <tr key={'repos_'+i}>
             <td>{repos.id}</td>
@@ -102,6 +104,12 @@ sortById(keyValue){
       }
     })
 
+    if(countRepo === 0){
+      return(<div className="repo-box">
+            <div className="no_repos">No Repos Found</div>
+        
+        </div>)
+    }
     if(this.props.repoFetching){
         return(
           <div className="repo-box">

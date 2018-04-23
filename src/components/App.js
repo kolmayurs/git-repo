@@ -100,13 +100,13 @@ componentWillMount(){
           </div>)
       }
       else{
-        userRepo =(<div></div>)
+        userRepo =(<div className="user-box">Search Github Repository</div>)
       }
       return (
         <div className="App">
         <Logo />
           <div className="input-box">
-            <input onChange={this.inputValue.bind(this)} />
+            <input placeholder="Search Github Repository" onChange={this.inputValue.bind(this)} />
           </div>
          {userRepo}
         </div>

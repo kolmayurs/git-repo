@@ -42,8 +42,9 @@ componentWillReceiveProps(nextProps) {
 }
 
   render() {
+    let userCount = 0;
     const user = this.props.user.map((users,i) => {
-      if(users.name){
+      userCount++;
        return(
           <div key={'user_'+i}>
           <img src={users.avatar} alt={users.name} title={users.name} />
@@ -51,18 +52,20 @@ componentWillReceiveProps(nextProps) {
           <div className="user-description">{users.description}</div>
           </div>
            )
-      }
-      else{
-        return(
-          <h1 key={'user_'+i}>Name is null</h1>
-        )
-      }
     })  
 
      if(this.props.userFetching){
         return(
           <div className="user-box">
           <Loader />
+          </div> 
+        )
+      }
+
+      if(userCount===0){
+        return(
+          <div className="user-box">
+          <div className="no_repos">No User Found</div>
           </div> 
         )
       }
