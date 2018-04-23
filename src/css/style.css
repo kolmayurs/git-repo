@@ -98,7 +98,8 @@ body{
 .repo-box{
 	position: relative;
 	top:150px;
-	width: 600px;
+	width: 100%;
+  max-width:800px; 
 	padding: 20px;
 	background-color: #ffffff;
 	display: block;
@@ -109,6 +110,9 @@ body{
 
 table{
 	text-align: center;
+  width: 100%;
+  max-width:800px; 
+
 }
 
 td{
