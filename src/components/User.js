@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchUser} from '../actions/reduxActions';
+import Loader from './Loading';
 
 const mapStateToProps = (state) => {
   return {
@@ -43,9 +44,13 @@ componentWillReceiveProps(nextProps) {
   render() {
     const user = this.props.user.map((users,i) => {
       if(users.name){
-      return(
-          <h1 key={'user_'+i}>{users.name}</h1>
-        )
+       return(
+          <div key={'user_'+i}>
+          <img src={users.avatar} alt={users.name} title={users.name} />
+          <div className="user-name">{users.name}</div>
+          <div className="user-description">{users.description}</div>
+          </div>
+           )
       }
       else{
         return(
@@ -56,25 +61,29 @@ componentWillReceiveProps(nextProps) {
 
      if(this.props.userFetching){
         return(
-          <h1>User Loading...</h1>
+          <div className="user-box">
+          <Loader />
+          </div> 
         )
       }
 
 
-    if(this.props.userError){
+    /*if(this.props.userError){
         return(
           <h1>User Error...</h1>
         )
-      }
+      }*/
       if(!this.props.user||this.props.user.length<0 || typeof this.props.user === 'undefined'){
         return(
           <h1>User Not Found</h1>
         )
       }
     return (
-      <div className="user">
-        {user}
-      </div>
+        <div className="user-box">
+        {
+          user
+        }
+        </div> 
     );
   }
 }

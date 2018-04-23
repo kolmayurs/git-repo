@@ -4,6 +4,9 @@
   //import {fetchUser, fetchRepo} from '../actions/reduxActions';
   import User from './User';
   import Repo from './Repo';
+  import '../css/style.css';
+  import Logo from './Logo';
+  import Loader from './Loading';
 
   /*const mapStateToProps = (state) => {
     return {
@@ -25,15 +28,19 @@
   class App extends React.Component {
     constructor(props){
       super(props);
-      this.state = {inputValue: 'kolmayurs'}
+      this.state = {inputValue: '', isLoading: false}
       this.inputValue= this.inputValue.bind(this);
     }
 
     componentDidMount(){
+      this.setState({isLoading: false});
     /*this.props.fetchUser('kolmayurs');
     this.props.fetchRepo('kolmayurs');*/
   }
 
+componentWillMount(){
+   this.setState({isLoading: true});
+}
   inputValue(e){
     this.setState({inputValue: e.target.value});
     /*this.props.fetchUser(e.target.value);
@@ -41,6 +48,9 @@
   }
 
     render() {
+      if(this.state.isLoading){
+        return(<Loader />)
+      }
      /* const user = this.props.user.map((users,i) => {
 
         if(this.props.userFetching){
@@ -82,13 +92,23 @@
             <h3 key={'repo_'+i}>{repos.name}</h3>
           )
       })*/
-
+      let userRepo =[];
+      if(this.state.inputValue !== ''){
+        userRepo =(<div>
+           <User inputValue={this.state.inputValue} />
+          <Repo inputValue={this.state.inputValue} />
+          </div>)
+      }
+      else{
+        userRepo =(<div></div>)
+      }
       return (
         <div className="App">
-          <h1>awdx</h1>
-          <input onChange={this.inputValue.bind(this)} />
-          <User inputValue={this.state.inputValue} />
-          <Repo inputValue={this.state.inputValue} />
+        <Logo />
+          <div className="input-box">
+            <input onChange={this.inputValue.bind(this)} />
+          </div>
+         {userRepo}
         </div>
       );
     }

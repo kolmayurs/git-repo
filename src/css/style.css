@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body{
+	width: 100%;
+	background-color: #ededed;
+  font-family: 'Open Sans', sans-serif;
+}
+#root{
+	
+	margin: 0;
+	padding: 0;
+}
+.App{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.bms_logo{
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	border-bottom: 1px solid #ededed;
+	background-color: #ffffff;
+	margin: 0;
+	padding: 0;
+}
+
+.bms_logo img{
+	display: block;
+	margin: 0 auto;
+	width: 151px;
+	height: 44px;
+	padding: 15px 0;
+
+}
+
+.input-box{
+	position: relative;
+	top:100px;
+	width: 400px;
+	padding: 20px;
+	background-color: #ffffff;
+	display: block;
+	margin: 0 auto;
+	border: 1px solid #ededed;
+	outline: 1px solid #ededed;
+
+
+}
+
+.input-box input{
+	width: 380px;
+	padding: 10px;
+	border: 1px solid #ededed;
+	/*outline: 1px solid #ededed;*/
+	background-color: #ffffff;
+}
+
+.user-box{
+	position: relative;
+	top:120px;
+	width: 400px;
+	padding: 20px;
+	background-color: #ffffff;
+	display: block;
+	margin: 0 auto;
+	border: 1px solid #ededed;
+	outline: 1px solid #ededed;
+}
+
+.user-box img{
+	display: block;
+	margin: 0 auto;
+	width: 70px;
+	height: 70px;
+	padding: 10px 0 5px 0;
+
+}
+
+.user-name{
+	display: block;
+	padding: 5px 10px 5px 10px;
+	color: blue;
+	text-align: center;
+	font-size: 18px;
+
+}
+
+.user-description{
+	display: block;
+	padding: 5px 10px 0 10px;
+	text-align: center;
+	font-size: 14px;
+
+}
+
+.repo-box{
+	position: relative;
+	top:150px;
+	width: 600px;
+	padding: 20px;
+	background-color: #ffffff;
+	display: block;
+	margin: 0 auto;
+	border: 1px solid #ededed;
+	outline: 1px solid #ededed;
+}
+
+table{
+	text-align: center;
+}
+
+td{
+	text-align: center;
+	padding: 5px;
+}
+
+.loader {
+  position: relative;
+  z-index: 1;
+  margin: 0px auto;
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #010101;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading_test{
+  text-align: center;
+  display: block;
+  padding: 10px 0px;
+}

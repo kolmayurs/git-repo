@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchRepo} from '../actions/reduxActions';
+import Loader from './Loading';
 
 const mapStateToProps = (state) => {
   return {
@@ -43,10 +44,16 @@ componentWillReceiveProps(nextProps) {
    
 
     const repo = this.props.repo.map((repos,i) => {
-      if(repos){
-      return(
-          <h3 key={'repo_'+i}>{repos.name}</h3>
-        )
+      if(repos !== [] || repos !== null){
+     return(
+          <tr key={'repos_'+i}>
+            <td>{repos.id}</td>
+            <td>{repos.name}</td>
+            <td>{repos.owner.login}</td>
+            <td>{repos.stargazers_count}</td>
+            <td>{repos.created_at}</td>
+          </tr>
+           )
       }
       else{
         return(
@@ -57,15 +64,19 @@ componentWillReceiveProps(nextProps) {
 
     if(this.props.repoFetching){
         return(
-          <h1>Repo Loading...</h1>
+          <div className="repo-box">
+
+          <Loader />
+        
+        </div>
         )
       }
 
-      if(this.props.repoError){
+     /* if(this.props.repoError){
         return(
           <h1>Repo Error...</h1>
         )
-      }
+      }*/
 
       if(!this.props.repo ||this.props.repo.length<0 || typeof this.props.repo === 'undefined'){
         return(
@@ -74,9 +85,21 @@ componentWillReceiveProps(nextProps) {
       }
 
     return (
-      <div className="Repo">
-        {repo}
-      </div>
+      <div className="repo-box">
+         <table border="1" cellPadding="0" cellSpacing="0">
+         <tbody>
+          <tr>
+            <td>ID</td>
+            <td>Repo Title</td>
+            <td>Owner</td>
+            <td>Stars</td>
+            <td>Created</td>
+          </tr>
+            {repo}
+            </tbody>
+        </table>
+        
+        </div>
     );
   }
 }

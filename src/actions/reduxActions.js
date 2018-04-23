@@ -17,8 +17,9 @@ export function fetchUser(input){
 export function fetchRepo(input){
 	return function(dispatch){
 		dispatch({type: 'START_FETCH_REPO'})
-		/*axios.get('https://api.github.com/users/'+input+'/repos?access_token=95010da215609a05ea3964f4c34bd4ddda253c94')*/
 		axios.get('https://api.github.com/users/'+input+'/repos')
+		//axios.get('https://api.github.com/users/'+input+'/repos')
+		//axios.get('https://api.myjson.com/bins/9qbsr?username='+input)
 		.then(res => {
 			dispatch({type: 'RECEIVE_REPO', payload: res.data})
 		})
