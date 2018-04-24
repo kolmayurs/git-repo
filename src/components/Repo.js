@@ -44,7 +44,7 @@ function GetSortOrderHigh(prop) {
 class Repo extends React.Component {
   constructor(props){
     super(props);
-    this.state={key: '',currentPage:1, reposPerPage:10, orderId: false, orderName:false, orderOwner:false, orderStars:false, OrderCreated:false}
+    this.state={key: '',currentPage:1, reposPerPage:30, orderId: false, orderName:false, orderOwner:false, orderStars:false, OrderCreated:false}
     this.sortById= this.sortById.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.repoNo = this.repoNo.bind(this);
