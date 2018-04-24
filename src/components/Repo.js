@@ -78,11 +78,11 @@ sortById(keyValue){
    }
 
    if(this.state.key === 'name_0'|| this.state.key === 'name_1'){
-    this.props.repo.sort(GetSortOrderLow("name"));
+    this.setState({orderName: !this.state.orderName});
    }
 
     if(this.state.key === 'owner_0' || this.state.key === 'owner_1'){
-    this.props.repo.sort(GetSortOrderLow("owner.login"));
+    this.setState({orderOwner: !this.state.orderOwner});
    }
 
  if(this.state.key === 'stars_0' || this.state.key === 'stars_1'){
