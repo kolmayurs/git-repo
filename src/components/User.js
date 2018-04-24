@@ -42,6 +42,14 @@ componentWillReceiveProps(nextProps) {
 }
 
   render() {
+     if(this.props.userFetching){
+        return(
+          <div className="user-box">
+          <Loader />
+          </div> 
+        )
+      }
+
     let userCount = 0;
     const user = this.props.user.map((users,i) => {
       userCount++;
@@ -53,14 +61,6 @@ componentWillReceiveProps(nextProps) {
           </div>
            )
     })  
-
-     if(this.props.userFetching){
-        return(
-          <div className="user-box">
-          <Loader />
-          </div> 
-        )
-      }
 
       if(userCount===0){
         return(

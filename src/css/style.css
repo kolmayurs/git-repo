@@ -162,3 +162,36 @@ td{
   display: block;
   padding: 10px 0px;
 }
+
+table tbody tr:first-child  td{
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #f1f1f1;
+}
+.repo_no{
+  padding-bottom: 15px;
+}
+
+select{ padding: 2px;}
+select option{
+  padding: 2px;
+  text-align: center;
+}
+ul{
+  list-style-type: none;
+  padding:5px 0px;
+  margin: 0px;
+  font-weight: bold;
+}
+
+ul li{
+  padding: 7px 10px;
+  display: inline-block;
+  border: 2px solid #f1f1f1;
+  margin: 5px;
+  cursor: pointer;
+}
+
+ul li:active, .active_page{
+  background-color: #f1f1f1;
+}
